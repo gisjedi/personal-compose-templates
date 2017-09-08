@@ -1,0 +1,8 @@
+version: "3"
+services:
+  sshd:
+    build: ./image
+    ports:
+     - "22:22"
+    environment:
+     - AUTHORIZED_KEYS

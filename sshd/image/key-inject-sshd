@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ "${AUTHORIZED_KEYS}x" != "x" ]]
+then
+	SSH_DIR=/home/ubuntu/.ssh
+	mkdir -p $SSH_DIR
+	echo "$AUTHORIZED_KEYS" > $SSH_DIR/authorized_keys
+fi
+
+exec /usr/sbin/sshd -D
