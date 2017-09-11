@@ -1,0 +1,19 @@
+version: "3"
+services:
+  cloud9:
+    container_name: cloud9
+    image: gisjedi/cloud9-workspace
+    restart: unless-stopped
+    ports:
+     - "3922:22"
+    volumes:
+     - "$HOME/.cloud9-workspace:/workspace"
+    environment:
+     - AUTHORIZED_KEYS
+    links:
+     - dind
+  dind:
+    container_name: cloud9-dind
+    image: docker:stable-dind
+    restart: unless-stopped
+    privileged: true
