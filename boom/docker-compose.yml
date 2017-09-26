@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  boom:
+    container_name: boom
+    image: gisjedi/boom
+    networks:
+     - http
+    restart: unless-stopped
+    environment:
+     - VIRTUAL_HOST=boom.gisjedi.com
+     - LETSENCRYPT_HOST=boom.gisjedi.com
+     - LETSENCRYPT_EMAIL=jon@gisjedi.com
+
+networks:
+  http:
+    external:
+      name: http
