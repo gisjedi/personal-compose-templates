@@ -2,7 +2,7 @@ version: '2'
 services:
   plex:
     container_name: plex
-    image: plexinc/pms-docker
+    build: .
     restart: unless-stopped
     ports:
       - 32400:32400/tcp
