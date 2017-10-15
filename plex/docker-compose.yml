@@ -2,7 +2,7 @@ version: '2'
 services:
   plex:
     container_name: plex
-    build: .
+    image: plexinc/pms-docker
     restart: unless-stopped
     ports:
       - 32400:32400/tcp
@@ -18,8 +18,9 @@ services:
       - TZ=${TZ}
       - PLEX_CLAIM=${PLEX_CLAIM}
       - ADVERTISE_IP=http://${HOST_IP}:32400/
+      - PLEX_UID=500
     hostname: PlexServer
     volumes:
-      - $HOME/.plex:/config
+      - /mnt/Configuration/plex:/config
       - /tmp/plex-transcode:/transcode
       - /mnt/Multimedia:/data
